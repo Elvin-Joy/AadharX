@@ -1,6 +1,4 @@
-// ================================
-// scanner.js — FINAL WORKING VERSION
-// ================================
+
 
 class QRScanner {
     constructor() {
@@ -18,10 +16,10 @@ class QRScanner {
         ];
     }
 
-    // 🔥 FORCE CAMERA PERMISSION + INIT
+    
     async initialize() {
         try {
-            // 🔑 THIS LINE TRIGGERS THE PERMISSION POPUP
+            
             await navigator.mediaDevices.getUserMedia({ video: true });
 
             if (typeof Html5Qrcode === "undefined") {
@@ -93,7 +91,7 @@ class QRScanner {
                 this.cameraId,
                 config,
                 (decodedText) => this.onScanSuccess(decodedText),
-                () => {} // ignore scan noise
+                () => {} 
             );
 
             this.scanning = true;
@@ -115,7 +113,7 @@ class QRScanner {
     }
 
     onScanSuccess(text) {
-    // 🔥 DEMO MODE: Ignore QR content
+    
     const demoAadhaar = "123456789012";
 
     this.stopCamera();
@@ -179,9 +177,7 @@ class QRScanner {
     }
 }
 
-// ================================
-// GLOBAL HANDLERS
-// ================================
+
 
 let qrScanner = null;
 
