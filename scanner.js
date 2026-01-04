@@ -115,16 +115,19 @@ class QRScanner {
     }
 
     onScanSuccess(text) {
-        const aadhaar = this.extractAadhaar(text);
-        if (!aadhaar) return;
+    // 🔥 DEMO MODE: Ignore QR content
+    const demoAadhaar = "123456789012";
 
-        this.stopCamera();
-        document.getElementById("scanResult").style.display = "block";
-        document.getElementById("scannedData").textContent = `Aadhaar: ${aadhaar}`;
+    this.stopCamera();
 
-        window.scannedAadhaar = aadhaar;
-        this.updateStatus("QR Code Detected", "success");
-    }
+    document.getElementById("scanResult").style.display = "block";
+    document.getElementById("scannedData").textContent =
+        `Aadhaar: ${demoAadhaar} (Demo)`;
+
+    window.scannedAadhaar = demoAadhaar;
+    this.updateStatus("QR Code Detected (Demo)", "success");
+}
+
 
     extractAadhaar(text) {
         for (const pattern of this.aadhaarPatterns) {
