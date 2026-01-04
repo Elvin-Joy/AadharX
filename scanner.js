@@ -1,6 +1,4 @@
-// ================================
-// scanner.js — FINAL WORKING VERSION
-// ================================
+
 
 class QRScanner {
     constructor() {
@@ -18,10 +16,10 @@ class QRScanner {
         ];
     }
 
-    // 🔥 FORCE CAMERA PERMISSION + INIT
+    
     async initialize() {
         try {
-            // 🔑 THIS LINE TRIGGERS THE PERMISSION POPUP
+            
             await navigator.mediaDevices.getUserMedia({ video: true });
 
             if (typeof Html5Qrcode === "undefined") {
@@ -93,7 +91,7 @@ class QRScanner {
                 this.cameraId,
                 config,
                 (decodedText) => this.onScanSuccess(decodedText),
-                () => {} // ignore scan noise
+                () => {} 
             );
 
             this.scanning = true;
@@ -115,16 +113,19 @@ class QRScanner {
     }
 
     onScanSuccess(text) {
-        const aadhaar = this.extractAadhaar(text);
-        if (!aadhaar) return;
+    
+    const demoAadhaar = "123456789012";
 
-        this.stopCamera();
-        document.getElementById("scanResult").style.display = "block";
-        document.getElementById("scannedData").textContent = `Aadhaar: ${aadhaar}`;
+    this.stopCamera();
 
-        window.scannedAadhaar = aadhaar;
-        this.updateStatus("QR Code Detected", "success");
-    }
+    document.getElementById("scanResult").style.display = "block";
+    document.getElementById("scannedData").textContent =
+        `Aadhaar: ${demoAadhaar} (Demo)`;
+
+    window.scannedAadhaar = demoAadhaar;
+    this.updateStatus("QR Code Detected (Demo)", "success");
+}
+
 
     extractAadhaar(text) {
         for (const pattern of this.aadhaarPatterns) {
@@ -176,9 +177,7 @@ class QRScanner {
     }
 }
 
-// ================================
-// GLOBAL HANDLERS
-// ================================
+
 
 let qrScanner = null;
 
