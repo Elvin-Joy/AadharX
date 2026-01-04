@@ -1,0 +1,8 @@
+﻿{
+  "123456789012": {
+    "name": "Test Patient",
+    "dob": "1990-01-01",
+    "blood_type": "O+",
+    "allergies": ["Penicillin"]
+  }
+}
